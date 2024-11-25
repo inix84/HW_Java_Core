@@ -2,22 +2,30 @@ import org.skypro.skyshop.basket.ProductBasket;
 
 public class App {
     public static void main(String[] args) {
-        ProductBasket productBasket = new ProductBasket();
-        productBasket.addProduct("Молоко", 56);
-        productBasket.addProduct("Хлеб", 23);
-        productBasket.addProduct("Масло", 130);
-        productBasket.addProduct("Сметана", 78);
-        productBasket.addProduct("Сосиски", 202);
-        productBasket.printAllProducts();
-        System.out.println("Размер корзины: " + productBasket.getCurrentSize());
+        ProductBasket Basket = new ProductBasket();
+        Basket.addProduct("Молоко", 56);
+        Basket.addProduct("Хлеб", 23);
+        Basket.addProduct("Масло", 130);
+        Basket.addProduct("Сметана", 78);
+        Basket.addProduct("Сосиски", 202);
         System.out.println();
-        productBasket.findProduct("Масло");
+        Basket.addProduct("Чипсы", 249);
         System.out.println();
-        productBasket.removeProduct("Масло");
+        Basket.printBasket();
         System.out.println();
-        productBasket.findProduct("Масло");
+        Basket.printTotalCostBasket();
         System.out.println();
-        productBasket.printAllProducts();
-        System.out.println("Размер корзины: " + productBasket.getCurrentSize());
+        Basket.findProduct("Масло");
+        System.out.println();
+        Basket.findProduct("Чипсы");
+        System.out.println();
+        Basket.cleaningBasket();
+        System.out.println();
+        Basket.printBasket();
+        System.out.println();
+        Basket.printTotalCostBasket();
+        System.out.println();
+        Basket.findProduct("Масло");
+
     }
 }

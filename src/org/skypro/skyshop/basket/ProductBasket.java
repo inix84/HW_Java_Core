@@ -3,52 +3,61 @@ package org.skypro.skyshop.basket;
 import org.skypro.skyshop.product.Product;
 
 public class ProductBasket {
-    private final Product[] products;
-    private int size;
+    private Product[] basket;
+    private int sizeBasket = 0;
 
     public ProductBasket() {
-        this.products = new Product[5];
+        this.basket = new Product[5];
     }
 
-    public void addProduct(String productName, int cost) {
-        if (size >= products.length) {
-            System.out.println("Нельзя добавить продукт, закончилось место");
-        }
-        Product newProduct = new Product(productName, cost);
-        products[size++] = newProduct;
-    }
-
-    public void removeProduct(String productName) {
-        for (int i = 0; i < products.length; i++) {
-            if (products[i].getName().equals(productName)) {
-                System.out.println(products[i].getName() + " удален");
-                System.arraycopy(products, i + 1, products, i, size - i - 1);
-                products[size - 1] = null;
-                size--;
-                return;
-            }
+    public void addProduct(String productName, int productCost) {
+        if (sizeBasket <= basket.length - 1) {
+            Product newProduct = new Product(productName, productCost);
+            basket[sizeBasket] = newProduct;
+            sizeBasket++;
+        } else {
+            System.out.println("Невозможно добавить продукт");
         }
     }
 
-    public void findProduct(String productName) {
-        for (int i = 0; i < size; i++) {
-            Product product = products[i];
+    public void cleaningBasket() {
+        for (int i = 0; i < basket.length; i++) {
+            basket[i] = null;
+            sizeBasket = 0;
+            return;
+        }
+    }
+
+    public boolean findProduct(String productName) {
+        for (int i = 0; i < sizeBasket; i++) {
+            Product product = basket[i];
             if (product.getName().equals(productName)) {
-                System.out.println(product.getName() + " по " + product.getCost() + " рублей ");
-                return;
+                System.out.println(true);
+                return true;
             }
         }
-        System.out.println(productName + " не найден");
+        System.out.println(false);
+        return false;
     }
 
-    public void printAllProducts() {
-        for (int i = 0; i < size; i++) {
-            Product product = products[i];
-            System.out.println(product.getName() + " по " + product.getCost() + " рублей ");
+    public void printTotalCostBasket() {
+        int summ = 0;
+        for (int i = 0; i < sizeBasket; i++) {
+            Product product = basket[i];
+            summ = summ + product.getCost();
         }
+        System.out.println("Итого: " + summ);
     }
 
-    public int getCurrentSize() {
-        return size;
+    public void printBasket() {
+        if (sizeBasket != 0) {
+            for (int i = 0; i < sizeBasket; i++) {
+                Product product = basket[i];
+                System.out.println(product.getName() + ": " + product.getCost());
+            }
+        }
+        if (sizeBasket == 0) {
+            System.out.println("В корзине пусто ");
+        }
     }
 }

@@ -1,7 +1,7 @@
 package org.skypro.skyshop.product;
 
 public class Product {
-    private final String name;
+    private String name;
     private int cost;
 
     public Product(String name, int cost) {
@@ -19,6 +19,10 @@ public class Product {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
