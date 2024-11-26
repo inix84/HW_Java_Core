@@ -30,13 +30,12 @@ public class ProductBasket {
 
     public boolean findProduct(String productName) {
         for (int i = 0; i < sizeBasket; i++) {
-            Product product = basket[i];
-            if (product.getName().equals(productName)) {
-                System.out.println(true);
+            if (basket[i].getName().equals(productName)) {
+                System.out.println(productName + " в корзине есть");
                 return true;
             }
         }
-        System.out.println(false);
+        System.out.println(productName + " в корзине нет");
         return false;
     }
 
