@@ -11,6 +11,7 @@ public class App {
         System.out.println();
         Basket.addProduct("Чипсы", 249);
         System.out.println();
+
         Basket.printBasket();
         System.out.println();
         Basket.printTotalCostBasket();
