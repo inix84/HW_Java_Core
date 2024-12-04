@@ -2,12 +2,17 @@ package org.skypro.skyshop.product;
 
 import java.util.Objects;
 
-public class SimpleProduct extends Product {
+public class SimpleProduct extends Product {//класс для продуктов с обычной ценой
     private int price;
     public SimpleProduct(String name, int price) {
         super(name);
         this.price = price;
     }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public int getPrice() {
         return price;
