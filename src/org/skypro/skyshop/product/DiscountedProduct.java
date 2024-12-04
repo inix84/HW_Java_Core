@@ -32,6 +32,6 @@ public class DiscountedProduct extends Product {// класс для проду�
 
     @Override
     public String toString() {
-        return getName() + ": " + getPrice();
+        return getName() + ": " + getPrice() + "(" + discount + "%)";
     }
 }

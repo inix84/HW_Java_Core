@@ -16,6 +16,8 @@ public abstract class Product { // родительский класс для п
     }
 
     public abstract int getPrice();
-
+    public boolean isSpecial(){
+        return true; // а условаие то какое?
+    }
 
 }

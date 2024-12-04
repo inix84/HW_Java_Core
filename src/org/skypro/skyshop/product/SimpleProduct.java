@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class SimpleProduct extends Product {//класс для продуктов с обычной ценой
     private int price;
+
     public SimpleProduct(String name, int price) {
         super(name);
         this.price = price;
