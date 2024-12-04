@@ -1,31 +1,29 @@
 package org.skypro.skyshop.product;
 
-public class Product {
+public abstract class Product {
     private String name;
-    private int cost;
+    //private int price;
 
-    public Product(String name, int cost) {
+    public Product(String name) {
         this.name = name;
-        this.cost = cost;
+        //this.price = price;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCost() {
-        return cost;
-    }
+    public abstract int getPrice();
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
+    //public void setPrice(int price) {
+    //    this.price = price;
+    //}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    //public void setName(String name) {
+    //    this.name = name;
+    //}
 
-    @Override
+    /*@Override
     public boolean equals(Object other) {
         if (this.getClass() != other.getClass()) {
             return false;
@@ -41,6 +39,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + ": " + cost;
-    }
+        return name + ": " + price;*/
+    //}
 }

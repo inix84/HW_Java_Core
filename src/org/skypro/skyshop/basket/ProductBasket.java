@@ -1,18 +1,18 @@
 package org.skypro.skyshop.basket;
 
-import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class ProductBasket {
-    private Product[] basket;
+    private SimpleProduct[] basket;
     private int sizeBasket = 0;
 
     public ProductBasket() {
-        this.basket = new Product[5];
+        this.basket = new SimpleProduct[5];
     }
 
-    public void addProduct(String productName, int productCost) {
+    public void addProduct(String productName, int productPrice) {
         if (sizeBasket <= basket.length - 1) {
-            Product newProduct = new Product(productName, productCost);
+            SimpleProduct newProduct = new SimpleProduct(productName, productPrice);
             basket[sizeBasket] = newProduct;
             sizeBasket++;
         } else {
@@ -40,8 +40,8 @@ public class ProductBasket {
     public void printTotalCostBasket() {
         int summ = 0;
         for (int i = 0; i < sizeBasket; i++) {
-            Product product = basket[i];
-            summ = summ + product.getCost();
+            SimpleProduct product = basket[i];
+            summ = summ + product.getPrice();
         }
         System.out.println("Итого: " + summ);
     }
@@ -49,8 +49,8 @@ public class ProductBasket {
     public void printBasket() {
         if (sizeBasket != 0) {
             for (int i = 0; i < sizeBasket; i++) {
-                Product product = basket[i];
-                System.out.println(product.getName() + ": " + product.getCost());
+                SimpleProduct product = basket[i];
+                System.out.println(product.getName() + ": " + product.getPrice());
             }
         }
         if (sizeBasket == 0) {
