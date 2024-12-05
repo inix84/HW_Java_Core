@@ -1,18 +1,39 @@
 package org.skypro.skyshop.basket;
 
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
 public class ProductBasket {
-    private SimpleProduct[] basket;
+    private Product[] basket;
     private int sizeBasket = 0;
 
     public ProductBasket() {
-        this.basket = new SimpleProduct[5];
+        this.basket = new Product[9]; // изменила +3 товара величину корзины
     }
 
     public void addProduct(String productName, int productPrice) {
         if (sizeBasket <= basket.length - 1) {
             SimpleProduct newProduct = new SimpleProduct(productName, productPrice);
+            basket[sizeBasket] = newProduct;
+            sizeBasket++;
+        } else {
+            System.out.println("Невозможно добавить продукт");
+        }
+    }
+    public void addProduct(String name, int basicPrice, int discount) {
+        if (sizeBasket <= basket.length - 1) {
+            DiscountedProduct newProduct = new DiscountedProduct(name, basicPrice, discount);
+            basket[sizeBasket] = newProduct;
+            sizeBasket++;
+        } else {
+            System.out.println("Невозможно добавить продукт");
+        }
+    }
+    public void addProduct(String productName) {
+        if (sizeBasket <= basket.length - 1) {
+            FixPriceProduct newProduct = new FixPriceProduct(productName);
             basket[sizeBasket] = newProduct;
             sizeBasket++;
         } else {
@@ -40,7 +61,7 @@ public class ProductBasket {
     public void printTotalPriceBasket() {
         int summ = 0;
         for (int i = 0; i < sizeBasket; i++) {
-            SimpleProduct product = basket[i];
+            Product product = basket[i];
             summ = summ + product.getPrice();
         }
         System.out.println("Итого: " + summ);
@@ -49,8 +70,9 @@ public class ProductBasket {
     public void printBasket() {
         if (sizeBasket != 0) {
             for (int i = 0; i < sizeBasket; i++) {
-                SimpleProduct product = basket[i];
-                System.out.println(product.getName() + ": " + product.getPrice());
+                Product product = basket[i];
+                System.out.println(product.toString());
+
             }
         }
         if (sizeBasket == 0) {

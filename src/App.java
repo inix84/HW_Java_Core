@@ -3,8 +3,12 @@ import org.skypro.skyshop.basket.ProductBasket;
 public class App {
     public static void main(String[] args) {
         ProductBasket Basket = new ProductBasket();
-        Basket.addProduct("Молоко", 56);
-        Basket.addProduct("Хлеб", 23);
+        Basket.addProduct("Молоко", 56); // обычное молоко
+        Basket.addProduct("Молоко", 150,40); // со скидкой
+        Basket.addProduct("Молоко"); // с фикс.ценой
+        Basket.addProduct("Хлеб", 23); // обычный хлеб
+        Basket.addProduct("Хлеб", 150,20); // со скидкой
+        Basket.addProduct("Хлеб"); // с фиксированной ценой
         Basket.addProduct("Масло", 130);
         Basket.addProduct("Сметана", 78);
         Basket.addProduct("Сосиски", 202);

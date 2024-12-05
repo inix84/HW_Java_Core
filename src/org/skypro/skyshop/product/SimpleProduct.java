@@ -38,6 +38,6 @@ public class SimpleProduct extends Product {//класс для продукто
 
     @Override
     public String toString() {
-        return getName() + ": " + price;
+        return getName() + ": " + getPrice();
     }
 }

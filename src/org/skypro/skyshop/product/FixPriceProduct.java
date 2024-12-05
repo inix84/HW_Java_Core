@@ -6,7 +6,7 @@ public class FixPriceProduct extends Product {// класс для продук�
     public FixPriceProduct(String name) {
         super(name);
     }
-
+    @Override
     public boolean isSpecial() {
         return true;
     }

@@ -11,14 +11,19 @@ public class DiscountedProduct extends Product {// класс для проду�
         this.basicPrice = basicPrice;
         this.discount = discount;
     }
-
+    @Override
     public boolean isSpecial() {
         return true;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
     @Override
     public int getPrice() {
-        return basicPrice * ((100 - discount) / 100);
+        float x = basicPrice * ((100 - discount) / 100);
+        return (int) x;
     }
 
     @Override
@@ -36,6 +41,6 @@ public class DiscountedProduct extends Product {// класс для проду�
 
     @Override
     public String toString() {
-        return getName() + ": " + getPrice() + "(" + discount + "%)";
+        return getName() + ": " + getPrice() + "(" + getDiscount() + "%)";
     }
 }
