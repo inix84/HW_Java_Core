@@ -67,6 +67,7 @@ public class ProductBasket {
             summ = summ + product.getPrice();
         }
         System.out.println("Итого: " + summ);
+        System.out.println("Специальных товаров: " ); /// как сделать проверку?
     }
 
     public void printBasket() {
