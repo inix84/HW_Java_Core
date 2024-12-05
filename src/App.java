@@ -14,7 +14,7 @@ public class App {
 
         Basket.printBasket();
         System.out.println();
-        Basket.printTotalCostBasket();
+        Basket.printTotalPriceBasket();
         System.out.println();
         Basket.findProduct("Масло");
         System.out.println();
@@ -24,7 +24,7 @@ public class App {
         System.out.println();
         Basket.printBasket();
         System.out.println();
-        Basket.printTotalCostBasket();
+        Basket.printTotalPriceBasket();
         System.out.println();
         Basket.findProduct("Масло");
 

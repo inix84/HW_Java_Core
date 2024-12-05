@@ -37,7 +37,7 @@ public class ProductBasket {
         return false;
     }
 
-    public void printTotalCostBasket() {
+    public void printTotalPriceBasket() {
         int summ = 0;
         for (int i = 0; i < sizeBasket; i++) {
             SimpleProduct product = basket[i];

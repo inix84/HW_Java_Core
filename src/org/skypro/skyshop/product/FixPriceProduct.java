@@ -7,6 +7,10 @@ public class FixPriceProduct extends Product {// класс для продук�
         super(name);
     }
 
+    public boolean isSpecial() {
+        return true;
+    }
+
     @Override
     public int getPrice() {
         return FIX_PRICE; // некоторая фиксированная цена

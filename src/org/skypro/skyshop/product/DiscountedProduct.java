@@ -12,6 +12,10 @@ public class DiscountedProduct extends Product {// класс для проду�
         this.discount = discount;
     }
 
+    public boolean isSpecial() {
+        return true;
+    }
+
     @Override
     public int getPrice() {
         return basicPrice * ((100 - discount) / 100);
