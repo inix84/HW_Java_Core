@@ -62,12 +62,16 @@ public class ProductBasket {
 
     public void printTotalPriceBasket() {
         int summ = 0;
+        int Special = 0;
         for (int i = 0; i < sizeBasket; i++) {
             Product product = basket[i];
             summ = summ + product.getPrice();
+            if (product.isSpecial()) {
+                Special = Special + 1;
+            }
         }
         System.out.println("Итого: " + summ);
-        System.out.println("Специальных товаров: " ); /// как сделать проверку?
+        System.out.println("Специальных товаров: " + Special);
     }
 
     public void printBasket() {
