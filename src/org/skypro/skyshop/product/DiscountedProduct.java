@@ -22,7 +22,9 @@ public class DiscountedProduct extends Product {// класс для проду�
 
     @Override
     public int getPrice() {
-        float x = basicPrice * ((100 - discount) / 100);
+        int discount1=100-discount;
+        float discount2 = (float) discount1/100;
+        float x = basicPrice * discount2;
         return (int) x;
     }
 

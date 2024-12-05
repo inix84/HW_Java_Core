@@ -22,6 +22,7 @@ public class ProductBasket {
             System.out.println("Невозможно добавить продукт");
         }
     }
+
     public void addProduct(String name, int basicPrice, int discount) {
         if (sizeBasket <= basket.length - 1) {
             DiscountedProduct newProduct = new DiscountedProduct(name, basicPrice, discount);
@@ -31,6 +32,7 @@ public class ProductBasket {
             System.out.println("Невозможно добавить продукт");
         }
     }
+
     public void addProduct(String productName) {
         if (sizeBasket <= basket.length - 1) {
             FixPriceProduct newProduct = new FixPriceProduct(productName);
@@ -72,7 +74,6 @@ public class ProductBasket {
             for (int i = 0; i < sizeBasket; i++) {
                 Product product = basket[i];
                 System.out.println(product.toString());
-
             }
         }
         if (sizeBasket == 0) {
