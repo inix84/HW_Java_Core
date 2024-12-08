@@ -1,46 +1,21 @@
 package org.skypro.skyshop.product;
 
-public class Product {
+public abstract class Product { // родительский класс для продуктов разных цен
     private String name;
-    private int cost;
 
-    public Product(String name, int cost) {
+    public Product(String name) {
         this.name = name;
-        this.cost = cost;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Product c2 = (Product) other;
-        return name.equals(c2.name);
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public int hashCode() {
-        return java.util.Objects.hash(name);
-    }
+    public abstract int getPrice();
 
-    @Override
-    public String toString() {
-        return name + ": " + cost;
-    }
+    public abstract boolean isSpecial();
 }
