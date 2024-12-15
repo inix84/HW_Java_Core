@@ -1,6 +1,6 @@
 package org.skypro.skyshop.product;
 
-import org.skypro.skyshop.Searchable;
+import org.skypro.skyshop.Search.Searchable;
 
 public class Product implements Searchable { // родительский класс для продуктов разных цен
     private String name;
@@ -9,21 +9,21 @@ public class Product implements Searchable { // родительский кла�
         this.name = name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
 
-    public abstract int getPrice();
+    public int getPrice() {
+        return 0;
+    }
 
-    public abstract boolean isSpecial();
+    public boolean isSpecial() {
+        return false;
+    }
 
     @Override
     public String gettingSearchTerm() {
-        return "возвращать имя товара"+name;
+        return "возвращать имя товара" + name;
     }
 
     @Override

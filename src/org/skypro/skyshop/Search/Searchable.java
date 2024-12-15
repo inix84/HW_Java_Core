@@ -1,6 +1,6 @@
-package org.skypro.skyshop;
+package org.skypro.skyshop.Search;
 
-public interface Searchable {
+public interface Searchable { // ДОПУСТИМЫЙ ПОИСК
     // Метод получения search term (термина поиска) — метод, который будет возвращать текст, по которому мы будем искать.
     String gettingSearchTerm();
 
@@ -8,8 +8,8 @@ public interface Searchable {
     String gettingContentType();
 
     //Метод получения имени Searchable-объекта. лучше назвать getStringRepresentation()
-    default void getStringRepresentation() {
+    default void getStringRepresentation() {// представление в виде строки всего найденного
         //Стоит сделать этот метод интерфейса default и добавить реализацию, которая будет выводить строку вида: «имя Searchable-объекта — типSearchable -объекта».
-        System.out.println("имя Searchable-объекта" + "— типSearchable -объекта");
+        System.out.println(gettingSearchTerm() + " - имя Searchable-объекта" + gettingContentType() + " — типSearchable -объекта");
     }
 }
