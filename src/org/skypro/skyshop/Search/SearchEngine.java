@@ -23,12 +23,11 @@ public class SearchEngine { // Поисковый движок
                 searchable1[j] = searchable[i];
                 j++;
             }
-            if (searchable1.length == 5) {
+            if (j == 5) {
                 break;
             }
         }
         System.out.println(Arrays.toString(searchable1));
         return searchable1;
     }
-
 }
