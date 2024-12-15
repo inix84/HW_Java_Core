@@ -1,39 +1,34 @@
 package org.skypro.skyshop.Search;
 
-
 import java.util.Arrays;
 
 public class SearchEngine { // Поисковый движок
-    private Searchable[] Searchable;
+    private Searchable[] searchable;
     private int sizeSearchable = 0;
 
-    public SearchEngine() {
-        this.Searchable = new Searchable[5];
+    public SearchEngine(int size) {
+        this.searchable = new Searchable[size];
     }
 
-    public void add(Searchable SearchableName) {
-        Searchable newSearchable = new Searchable() {
-            @Override
-            public String gettingSearchTerm() {
-                return "";
-            }
-
-            @Override
-            public String gettingContentType() {
-                return "";
-            }
-        };
-        Searchable[sizeSearchable] = newSearchable;
+    public void add(Searchable searchableName) {
+        searchable[sizeSearchable] = searchableName;
         sizeSearchable++;
     }
 
-    public void search(String SearchableName) {
+    public Searchable[] search(String searchableName) {
+        Searchable[] searchable1 = new Searchable[5]; // создала новый массив, на 5 элементов
+        int j = 0; // индекс нового массива
         for (int i = 0; i < sizeSearchable; i++) {
-            if (Searchable[i].gettingSearchTerm().equals(SearchableName)) {
-
-                ;
+            if (searchable[i].gettingSearchTerm().equals(searchableName)) {
+                searchable1[j] = searchable[i];
+                j++;
             }
-            System.out.println(Arrays.toString(Searchable));
+            if (searchable1.length == 5) {
+                break;
+            }
         }
+        System.out.println(Arrays.toString(searchable1));
+        return searchable1;
     }
+
 }

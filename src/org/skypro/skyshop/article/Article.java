@@ -3,8 +3,8 @@ package org.skypro.skyshop.article;
 import org.skypro.skyshop.Search.Searchable;
 
 public class Article implements Searchable {
-    String titleArticle; // название статьи
-    String textArticle; // тест статьи
+    private final String titleArticle; // название статьи
+    private final String textArticle; // текст статьи
 
     public Article(String titleArticle, String textArticle) {
         this.textArticle = textArticle;
@@ -18,7 +18,7 @@ public class Article implements Searchable {
 
     @Override
     public String gettingSearchTerm() {
-        return toString();
+        return titleArticle + textArticle;
     }
 
     @Override

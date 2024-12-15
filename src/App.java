@@ -36,14 +36,14 @@ public class App {
         System.out.println();
         Basket.findProduct("Масло");
         System.out.println("ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ");
-        SearchEngine SearchEngine = new SearchEngine();
+        SearchEngine SearchEngine = new SearchEngine(10);
         Article Article1 = new Article("Масло", "о масле");
         Article Article2 = new Article("Молоко", "о молоке");
         Article Article3 = new Article("Хлеб", "о хлебе");
         SearchEngine.add(Article1);
         SearchEngine.add(Article2);
         SearchEngine.add(Article3);
-        System.out.println(Article1);
+        //System.out.println(Article1);
         //SearchEngine.add();
         SearchEngine.search("Масло");
         SearchEngine.search("Молоко");

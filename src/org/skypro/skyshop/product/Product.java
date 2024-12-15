@@ -23,7 +23,7 @@ public class Product implements Searchable { // родительский кла�
 
     @Override
     public String gettingSearchTerm() {
-        return "возвращать имя товара" + name;
+        return name;
     }
 
     @Override
