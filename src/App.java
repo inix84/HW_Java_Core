@@ -38,7 +38,7 @@ public class App {
         System.out.println("ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ");
         SearchEngine SearchEngine = new SearchEngine(10);
         Article Article1 = new Article("Масло", "о масле");
-        Article Article2 = new Article("Молоко", "о молоке");
+        Article Article2 = new Article("Масло", "о молоке, которое стало масло");
         Article Article3 = new Article("Хлеб", "о хлебе");
         SearchEngine.add(Article1);
         SearchEngine.add(Article2);
