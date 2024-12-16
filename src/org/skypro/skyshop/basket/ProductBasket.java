@@ -50,7 +50,6 @@ public class ProductBasket {
             return;
         }
     }
-
     public boolean findProduct(String productName) {
         for (int i = 0; i < sizeBasket; i++) {
             if (basket[i].getName().equals(productName)) {

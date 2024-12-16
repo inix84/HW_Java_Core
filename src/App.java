@@ -44,6 +44,7 @@ public class App {
         SearchEngine.add(Article2);
         SearchEngine.add(Article3);
         //System.out.println(Article1);
+
         //SearchEngine.add();
         SearchEngine.search("Масло");
         SearchEngine.search("Молоко");

@@ -10,7 +10,6 @@ public class Article implements Searchable {
         this.textArticle = textArticle;
         this.titleArticle = titleArticle;
     }
-
     @Override
     public String toString() {
         return " Название статьи: " + titleArticle + ", Текст статьи: " + textArticle;

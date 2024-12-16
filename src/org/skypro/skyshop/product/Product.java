@@ -16,7 +16,6 @@ public class Product implements Searchable { // родительский кла�
     public int getPrice() {
         return 0;
     }
-
     public boolean isSpecial() {
         return false;
     }

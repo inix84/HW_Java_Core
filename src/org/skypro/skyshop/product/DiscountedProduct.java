@@ -28,7 +28,6 @@ public class DiscountedProduct extends Product {// класс для проду�
         float x = basicPrice * discount2;
         return (int) x;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

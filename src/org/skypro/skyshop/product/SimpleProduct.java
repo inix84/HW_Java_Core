@@ -17,7 +17,6 @@ public class SimpleProduct extends Product {//класс для продукто
     public boolean isSpecial() {
         return false;
     }
-
     @Override
     public int getPrice() {
         return price;
