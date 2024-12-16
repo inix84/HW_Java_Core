@@ -37,13 +37,28 @@ public class App {
         System.out.println();
         Basket.findProduct("Масло");
         System.out.println("ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ");
+        //Создайте один объект типа SearchEngine
         SearchEngine SearchEngine = new SearchEngine(10);
-        Article article1 = new Article("Масло", "о масле");
-        Article article2 = new Article("Масло", "о молоке, которое стало масло");
-        Article article3 = new Article("Хлеб", "о хлебе");
+
+        // Я ОТДЕЛЬНЫЕ СОЗДАЛА, А НЕ ТЕ ЧТО В КОРЗИНЕ!
         Product product1 = new Product("Масло");
         Product product2 = new Product("Молоко");
         Product product3 = new Product("Хлеб");
+
+        //добавьте в него все товары, которые создаются для проверки других методов.
+        SearchEngine.add(product1);
+        SearchEngine.add(product2);
+        SearchEngine.add(product3);
+
+        //Создайте несколько объектов типа Article
+        Article article1 = new Article("Масло", "о масле");
+        Article article2 = new Article("Масло", "о молоке, которое стало масло");
+        Article article3 = new Article("Хлеб", "о хлебе");
+
+        // добавьте их в Search Engine
+        SearchEngine.add(article1);
+        SearchEngine.add(article2);
+        SearchEngine.add(article3);
 
         product1.getStringRepresentation();
         product2.getStringRepresentation();
@@ -52,13 +67,7 @@ public class App {
         article2.getStringRepresentation();
         article3.getStringRepresentation();
 
-        SearchEngine.add(article1);
-        SearchEngine.add(article2);
-        SearchEngine.add(article3);
-        SearchEngine.add(product1);
-        SearchEngine.add(product2);
-        SearchEngine.add(product3);
-
+        // Продемонстрируйте функциональность поиска с помощью объекта SearchEngine: вызовите метод search несколько раз с разными строками поиска.
         SearchEngine.search("Масло");
         SearchEngine.search("Молоко");
         SearchEngine.search("Хлеб");
