@@ -53,6 +53,11 @@ public class App {
         SearchEngine.search("Масло");
         SearchEngine.search("Молоко");
         SearchEngine.search("Хлеб");
-
+        product1.getStringRepresentation();
+        product2.getStringRepresentation();
+        product3.getStringRepresentation();
+        article1.getStringRepresentation();
+        article2.getStringRepresentation();
+        article3.getStringRepresentation();
     }
 }

@@ -10,6 +10,6 @@ public interface Searchable { // ДОПУСТИМЫЙ ПОИСК
     //Метод получения имени Searchable-объекта. лучше назвать getStringRepresentation()
     default void getStringRepresentation() {// представление в виде строки всего найденного
         //Стоит сделать этот метод интерфейса default и добавить реализацию, которая будет выводить строку вида: «имя Searchable-объекта — типSearchable -объекта».
-        System.out.println(gettingSearchTerm() + " - имя Searchable-объекта" + gettingContentType() + " — типSearchable -объекта");
+        System.out.println(gettingSearchTerm() + " - имя Searchable-объекта, " + gettingContentType() + " — тип Searchable-объекта");
     }
 }
