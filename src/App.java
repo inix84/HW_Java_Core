@@ -41,23 +41,26 @@ public class App {
         Article article1 = new Article("Масло", "о масле");
         Article article2 = new Article("Масло", "о молоке, которое стало масло");
         Article article3 = new Article("Хлеб", "о хлебе");
-        SearchEngine.add(article1);
-        SearchEngine.add(article2);
-        SearchEngine.add(article3);
         Product product1 = new Product("Масло");
         Product product2 = new Product("Молоко");
         Product product3 = new Product("Хлеб");
-        SearchEngine.add(product1);
-        SearchEngine.add(product2);
-        SearchEngine.add(product3);
-        SearchEngine.search("Масло");
-        SearchEngine.search("Молоко");
-        SearchEngine.search("Хлеб");
+
         product1.getStringRepresentation();
         product2.getStringRepresentation();
         product3.getStringRepresentation();
         article1.getStringRepresentation();
         article2.getStringRepresentation();
         article3.getStringRepresentation();
+
+        SearchEngine.add(article1);
+        SearchEngine.add(article2);
+        SearchEngine.add(article3);
+        SearchEngine.add(product1);
+        SearchEngine.add(product2);
+        SearchEngine.add(product3);
+
+        SearchEngine.search("Масло");
+        SearchEngine.search("Молоко");
+        SearchEngine.search("Хлеб");
     }
 }

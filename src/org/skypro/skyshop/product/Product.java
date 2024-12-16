@@ -30,4 +30,9 @@ public class Product implements Searchable { // родительский кла�
     public String gettingContentType() {
         return "PRODUCT";
     }
+
+    @Override
+    public String toString() {
+        return " Название товара: " + name;
+    }
 }
