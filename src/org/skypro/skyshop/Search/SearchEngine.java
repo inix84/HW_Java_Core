@@ -14,6 +14,7 @@ public class SearchEngine { // Поисковый движок
         searchable[sizeSearchable] = searchableName;
         sizeSearchable++;
     }
+
     public Searchable[] search(String searchableName) {
         Searchable[] searchable1 = new Searchable[5]; // создала новый массив, на 5 элементов
         int j = 0; // индекс нового массива

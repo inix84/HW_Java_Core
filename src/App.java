@@ -2,6 +2,7 @@ import org.skypro.skyshop.Search.SearchEngine;
 import org.skypro.skyshop.Search.Searchable;
 import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.product.Product;
 
 import java.util.Arrays;
 
@@ -37,17 +38,21 @@ public class App {
         Basket.findProduct("Масло");
         System.out.println("ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ");
         SearchEngine SearchEngine = new SearchEngine(10);
-        Article Article1 = new Article("Масло", "о масле");
-        Article Article2 = new Article("Масло", "о молоке, которое стало масло");
-        Article Article3 = new Article("Хлеб", "о хлебе");
-        SearchEngine.add(Article1);
-        SearchEngine.add(Article2);
-        SearchEngine.add(Article3);
-        //System.out.println(Article1);
-
-        //SearchEngine.add();
+        Article article1 = new Article("Масло", "о масле");
+        Article article2 = new Article("Масло", "о молоке, которое стало масло");
+        Article article3 = new Article("Хлеб", "о хлебе");
+        SearchEngine.add(article1);
+        SearchEngine.add(article2);
+        SearchEngine.add(article3);
+        Product product1 = new Product("Масло");
+        Product product2 = new Product("Молоко");
+        Product product3 = new Product("Хлеб");
+        SearchEngine.add(product1);
+        SearchEngine.add(product2);
+        SearchEngine.add(product3);
         SearchEngine.search("Масло");
         SearchEngine.search("Молоко");
         SearchEngine.search("Хлеб");
+
     }
 }
