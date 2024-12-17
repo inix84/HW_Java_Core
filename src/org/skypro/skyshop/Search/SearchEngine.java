@@ -16,18 +16,18 @@ public class SearchEngine { // Поисковый движок
     }
 
     public Searchable[] search(String searchableName) {
-        Searchable[] searchable1 = new Searchable[5]; // создала новый массив, на 5 элементов
+        Searchable[] result = new Searchable[5]; // создала новый массив, на 5 элементов
         int j = 0; // индекс нового массива
         for (int i = 0; i < sizeSearchable; i++) {
             if (searchable[i].gettingSearchTerm().equals(searchableName)) {
-                searchable1[j] = searchable[i];
+                result[j] = searchable[i];
                 j++;
             }
             if (j == 5) {
                 break;
             }
         }
-        System.out.println(Arrays.toString(searchable1));
-        return searchable1;
+        System.out.println(Arrays.toString(result));
+        return result;
     }
 }
