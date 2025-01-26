@@ -1,5 +1,7 @@
 package org.skypro.skyshop.Search; // ПОИСК это серч
 
+import org.skypro.skyshop.application.errors.BestResultNotFound;
+
 import java.util.Arrays;
 
 public class SearchEngine { // Поисковый движок
@@ -31,7 +33,7 @@ public class SearchEngine { // Поисковый движок
         return result;
     }
 
-    public Searchable searchSuitableElement(String search) { //  метод Поиска Подходящего Элемента (продукт/ статья)
+    public Searchable searchSuitableElement(String search) throws BestResultNotFound { //  метод Поиска Подходящего Элемента (продукт/ статья)
         Searchable searchResult = null; // подходящий элемент
         String str, substring; // строка, подстрока
         int quantityResult = 0; // счетчик вхождений
@@ -55,7 +57,14 @@ public class SearchEngine { // Поисковый движок
                 }
             }
         }
-        System.out.println("Самый подходящий элемент поиска по слову '" + search + "' является элемент /" + searchResult + "/, в нем количество вхождений поискового слова = " + quantityResult);
+        if (searchResult == null) {
+            throw new BestResultNotFound(search);
+        }
+        System.out.println("Самый подходящий элемент поиска по слову '" +
+                search + "' является элемент /" + searchResult +
+                "/, в нем количество вхождений поискового слова = " + quantityResult);
         return searchResult;
+
+
     }
 }

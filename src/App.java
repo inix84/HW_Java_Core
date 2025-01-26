@@ -1,5 +1,6 @@
 import org.skypro.skyshop.Search.SearchEngine;
 import org.skypro.skyshop.Search.Searchable;
+import org.skypro.skyshop.application.errors.BestResultNotFound;
 import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
@@ -105,7 +106,15 @@ public class App {
         SearchEngine.add(article4);
         SearchEngine.add(article5);
         SearchEngine.add(article6);
-
+        try {
         SearchEngine.searchSuitableElement("масло");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
+        try {
+            SearchEngine.searchSuitableElement("чипсы");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
     }
 }
