@@ -2,12 +2,15 @@ import org.skypro.skyshop.Search.SearchEngine;
 import org.skypro.skyshop.Search.Searchable;
 import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
 
 import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
+        System.out.println("**** ДЗ ИНКАПСУЛЯЦИЯ, ДЗ НАСЛЕДОВАНИЕ **** ");
         ProductBasket Basket = new ProductBasket();
         Basket.addProduct("Молоко", 56); // обычное молоко
         Basket.addProduct("Молоко", 56, 40); // со скидкой
@@ -18,25 +21,25 @@ public class App {
         Basket.addProduct("Масло", 130);
         Basket.addProduct("Сметана", 78);
         Basket.addProduct("Сосиски", 202);
-        System.out.println();
+
         Basket.addProduct("Чипсы", 249);
-        System.out.println();
+
         Basket.printBasket();
-        System.out.println();
+
         Basket.printTotalPriceBasket();
-        System.out.println();
+
         Basket.findProduct("Масло");
-        System.out.println();
+
         Basket.findProduct("Чипсы");
-        System.out.println();
+
         Basket.cleaningBasket();
-        System.out.println();
+
         Basket.printBasket();
-        System.out.println();
+
         Basket.printTotalPriceBasket();
-        System.out.println();
+
         Basket.findProduct("Масло");
-        System.out.println("ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ");
+        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
         //Создайте один объект типа SearchEngine
         SearchEngine SearchEngine = new SearchEngine(10);
 
@@ -71,5 +74,21 @@ public class App {
         SearchEngine.search("Масло");
         SearchEngine.search("Молоко");
         SearchEngine.search("Хлеб");
+
+        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ИСКЛЮЧЕНИЯ ****");
+        try {
+            Product product4 = new Product(null);
+        } catch (IllegalArgumentException e) {
+            System.out.println("У добавляемого продукта нет названия , либо оно состоит только из пробелов. Продукт не создан");
+        }
+        try {
+            Product product5 = new SimpleProduct("Молоко", -10);
+        } catch (IllegalArgumentException e) {
+            System.out.println("У добавляемого продукта отрицательная основная цена. Продукт не создан");
+        }try {
+            Product product6 = new DiscountedProduct("Мясная вырезка", 1000, 111);
+        } catch (IllegalArgumentException e) {
+            System.out.println("У добавляемого продукта процент скидки меньше 0%, либо больше 100%. Продукт не создан");
+        }
     }
 }
