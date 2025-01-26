@@ -91,7 +91,7 @@ public class App {
         } catch (IllegalArgumentException e) {
             System.out.println("У добавляемого продукта процент скидки меньше 0%, либо больше 100%. Продукт не создан.");
         }
-        // добавила продукты и статьи, +3, добавила в тот же массив с поиском, увеличила массив до 100 элементов в нем
+        //добавляем больше элементов, для демонстрации поиска
         Product product4 = new Product("масло");
         Product product5 = new Product("молоко");
         Product product6 = new Product("хлеб");
@@ -100,15 +100,12 @@ public class App {
         SearchEngine.add(product6);
 
         Article article4 = new Article("молоко", "самое вкусное");
-        Article article5 = new Article("масло", "шоколадное масло");
+        Article article5 = new Article("масло", "шоколадное масло-масло-масло-масло");
         Article article6 = new Article("хлеб", "бородинский хлеб");
+        SearchEngine.add(article4);
+        SearchEngine.add(article5);
+        SearchEngine.add(article6);
 
         SearchEngine.searchSuitableElement("масло");
-
-
-
-
-
-
     }
 }
