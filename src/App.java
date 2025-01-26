@@ -12,25 +12,25 @@ public class App {
     public static void main(String[] args) {
         System.out.println("**** ДЗ ИНКАПСУЛЯЦИЯ, ДЗ НАСЛЕДОВАНИЕ **** ");
         ProductBasket Basket = new ProductBasket();
-        Basket.addProduct("Молоко", 56); // обычное молоко
-        Basket.addProduct("Молоко", 56, 40); // со скидкой
-        Basket.addProduct("Молоко"); // с фикс.ценой
-        Basket.addProduct("Хлеб", 23); // обычный хлеб
-        Basket.addProduct("Хлеб", 23, 20); // со скидкой
-        Basket.addProduct("Хлеб"); // с фиксированной ценой
-        Basket.addProduct("Масло", 130);
-        Basket.addProduct("Сметана", 78);
-        Basket.addProduct("Сосиски", 202);
+        Basket.addProduct("молоко", 56); // обычное молоко
+        Basket.addProduct("молоко", 56, 40); // со скидкой
+        Basket.addProduct("молоко"); // с фикс.ценой
+        Basket.addProduct("хлеб", 23); // обычный хлеб
+        Basket.addProduct("хлеб", 23, 20); // со скидкой
+        Basket.addProduct("хлеб"); // с фиксированной ценой
+        Basket.addProduct("масло", 130);
+        Basket.addProduct("сметана", 78);
+        Basket.addProduct("сосиски", 202);
 
-        Basket.addProduct("Чипсы", 249);
+        Basket.addProduct("чипсы", 249);
 
         Basket.printBasket();
 
         Basket.printTotalPriceBasket();
 
-        Basket.findProduct("Масло");
+        Basket.findProduct("масло");
 
-        Basket.findProduct("Чипсы");
+        Basket.findProduct("чипсы");
 
         Basket.cleaningBasket();
 
@@ -38,15 +38,15 @@ public class App {
 
         Basket.printTotalPriceBasket();
 
-        Basket.findProduct("Масло");
+        Basket.findProduct("масло");
         System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
         //Создайте один объект типа SearchEngine
-        SearchEngine SearchEngine = new SearchEngine(10);
+        SearchEngine SearchEngine = new SearchEngine(100);
 
         // Я ОТДЕЛЬНЫЕ СОЗДАЛА, А НЕ ТЕ ЧТО В КОРЗИНЕ!
-        Product product1 = new Product("Масло");
-        Product product2 = new Product("Молоко");
-        Product product3 = new Product("Хлеб");
+        Product product1 = new Product("масло");
+        Product product2 = new Product("молоко");
+        Product product3 = new Product("хлеб");
 
         //добавьте в него все товары, которые создаются для проверки других методов.
         SearchEngine.add(product1);
@@ -54,9 +54,9 @@ public class App {
         SearchEngine.add(product3);
 
         //Создайте несколько объектов типа Article
-        Article article1 = new Article("Масло", "о масле");
-        Article article2 = new Article("Масло", "о молоке, которое стало масло");
-        Article article3 = new Article("Хлеб", "о хлебе");
+        Article article1 = new Article("масло", "масло, масло, 87% жирности");
+        Article article2 = new Article("масло", "65% жирности");
+        Article article3 = new Article("хлеб", "хлеб натуральный, быстро плеснеевеет");
 
         // добавьте их в Search Engine
         SearchEngine.add(article1);
@@ -71,24 +71,44 @@ public class App {
         article3.getStringRepresentation();
 
         // Продемонстрируйте функциональность поиска с помощью объекта SearchEngine: вызовите метод search несколько раз с разными строками поиска.
-        SearchEngine.search("Масло");
-        SearchEngine.search("Молоко");
-        SearchEngine.search("Хлеб");
+        SearchEngine.search("масло");
+        SearchEngine.search("молоко");
+        SearchEngine.search("хлеб");
 
         System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ИСКЛЮЧЕНИЯ ****");
         try {
-            Product product4 = new Product(null);
+            Product product11 = new Product(null);
         } catch (IllegalArgumentException e) {
-            System.out.println("У добавляемого продукта нет названия , либо оно состоит только из пробелов. Продукт не создан");
+            System.out.println("У добавляемого продукта нет названия , либо оно состоит только из пробелов. Продукт не создан.");
         }
         try {
-            Product product5 = new SimpleProduct("Молоко", -10);
+            Product product22 = new SimpleProduct("молоко", -10);
         } catch (IllegalArgumentException e) {
-            System.out.println("У добавляемого продукта отрицательная основная цена. Продукт не создан");
-        }try {
-            Product product6 = new DiscountedProduct("Мясная вырезка", 1000, 111);
-        } catch (IllegalArgumentException e) {
-            System.out.println("У добавляемого продукта процент скидки меньше 0%, либо больше 100%. Продукт не создан");
+            System.out.println("У добавляемого продукта отрицательная основная цена. Продукт не создан.");
         }
+        try {
+            Product product33 = new DiscountedProduct("мясная вырезка", 1000, 111);
+        } catch (IllegalArgumentException e) {
+            System.out.println("У добавляемого продукта процент скидки меньше 0%, либо больше 100%. Продукт не создан.");
+        }
+        // добавила продукты и статьи, +3, добавила в тот же массив с поиском, увеличила массив до 100 элементов в нем
+        Product product4 = new Product("масло");
+        Product product5 = new Product("молоко");
+        Product product6 = new Product("хлеб");
+        SearchEngine.add(product4);
+        SearchEngine.add(product5);
+        SearchEngine.add(product6);
+
+        Article article4 = new Article("молоко", "самое вкусное");
+        Article article5 = new Article("масло", "шоколадное масло");
+        Article article6 = new Article("хлеб", "бородинский хлеб");
+
+        SearchEngine.searchSuitableElement("масло");
+
+
+
+
+
+
     }
 }

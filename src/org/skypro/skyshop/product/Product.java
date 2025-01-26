@@ -29,7 +29,10 @@ public class Product implements Searchable { // родительский кла�
     public String gettingSearchTerm() {
         return name;
     }
-
+    @Override
+    public String getSearchTerm() {
+        return name;
+    }
     @Override
     public String gettingContentType() {
         return "PRODUCT";
@@ -37,6 +40,6 @@ public class Product implements Searchable { // родительский кла�
 
     @Override
     public String toString() {
-        return " Название товара: " + name;
+        return "ПРОДУКТ: " + name;
     }
 }

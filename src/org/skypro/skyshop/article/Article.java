@@ -13,14 +13,18 @@ public class Article implements Searchable {
 
     @Override
     public String toString() {
-        return " Название статьи: " + titleArticle + ", Текст статьи: " + textArticle;
+        return "СТАТЬЯ: Название - " + titleArticle + ", текст - " + textArticle;
     }
 
     @Override
     public String gettingSearchTerm() {
         return titleArticle; //+ ":" + textArticle;
     }
-
+    @Override
+    public String getSearchTerm() {
+        String article = titleArticle + textArticle; // склееенная строка
+        return article;
+    }
     @Override
     public String gettingContentType() {
         return "ARTICLE";
