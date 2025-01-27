@@ -8,6 +8,9 @@ public class SimpleProduct extends Product {//класс для продукто
     public SimpleProduct(String name, int price) {
         super(name);
         this.price = price;
+        if (price<=0) {
+            throw new IllegalArgumentException("Отрицательная основная цена");
+        }
     }
 
     public void setPrice(int price) {

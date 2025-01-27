@@ -10,6 +10,13 @@ public class DiscountedProduct extends Product {// класс для проду�
         super(name);
         this.basicPrice = basicPrice;
         this.discount = discount;
+
+        if (basicPrice<=0) {
+            throw new IllegalArgumentException("Отрицательная базовая цена ");
+        }
+        if (discount<=0 | discount>=100) {
+            throw new IllegalArgumentException("Скидка меньше 0%, либо больше 100%");
+        }
     }
 
     @Override
@@ -28,7 +35,6 @@ public class DiscountedProduct extends Product {// класс для проду�
         float x = basicPrice * discount2;
         return (int) x;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
