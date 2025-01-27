@@ -1,5 +1,4 @@
 import org.skypro.skyshop.Search.SearchEngine;
-import org.skypro.skyshop.Search.Searchable;
 import org.skypro.skyshop.application.errors.BestResultNotFound;
 import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
@@ -7,7 +6,6 @@ import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
-import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
