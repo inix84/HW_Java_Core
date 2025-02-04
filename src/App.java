@@ -6,10 +6,10 @@ import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
-
 public class App {
     public static void main(String[] args) {
-        System.out.println("**** ДЗ ИНКАПСУЛЯЦИЯ, ДЗ НАСЛЕДОВАНИЕ **** ");
+        System.out.println(
+                "**** ДЗ ИНКАПСУЛЯЦИЯ, ДЗ НАСЛЕДОВАНИЕ **** ");
         ProductBasket Basket = new ProductBasket();
         Basket.addProduct("молоко", 56); // обычное молоко
         Basket.addProduct("молоко", 56, 40); // со скидкой
@@ -20,16 +20,15 @@ public class App {
         Basket.addProduct("масло", 130);
         Basket.addProduct("сметана", 78);
         Basket.addProduct("сосиски", 202);
-
         Basket.addProduct("чипсы", 249);
 
         Basket.printBasket();
 
         Basket.printTotalPriceBasket();
 
-        Basket.findProduct("масло");
+        //Basket.findProduct("молоко");
 
-        Basket.findProduct("чипсы");
+        //Basket.findProduct("чипсы");
 
         Basket.cleaningBasket();
 
@@ -37,7 +36,7 @@ public class App {
 
         Basket.printTotalPriceBasket();
 
-        Basket.findProduct("масло");
+       // Basket.findProduct("масло");
         System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
         //Создайте один объект типа SearchEngine
         SearchEngine SearchEngine = new SearchEngine(100);
