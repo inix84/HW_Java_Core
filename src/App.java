@@ -130,28 +130,28 @@ public class App {
         Basket.RemovingProductBasket("каша");
         Basket.printBasket();
 
-        SearchEngine SearchEngineList = new SearchEngine();
+        SearchEngine SearchEngineList = new SearchEngine(); // создала новый лист SearchEngineList
 
-        Product product7 = new Product("масло");
+        Product product7 = new Product("масло"); // создала новые продукты и статьи
         Product product8 = new Product("молоко");
         Product product9 = new Product("хлеб");
         Article article7 = new Article("масло", "масло, масло, 87% жирности");
         Article article8 = new Article("масло", "65% жирности");
         Article article9 = new Article("хлеб", "хлеб натуральный, быстро плеснеевеет");
 
-        SearchEngineList.add(product7);
+        SearchEngineList.add(product7); // добавила их в новый SearchEngineList
         SearchEngineList.add(product8);
         SearchEngineList.add(product9);
         SearchEngineList.add(article7);
         SearchEngineList.add(article8);
         SearchEngineList.add(article9);
 
-        SearchEngineList.search("масло");
+        SearchEngineList.search("масло"); // просто поиск в SearchEngineList
         SearchEngineList.search("молоко");
         SearchEngineList.search("хлеб");
 
         try {
-            SearchEngineList.searchSuitableElement("масло");
+            SearchEngineList.searchSuitableElement("масло"); // самый подходящий в SearchEngineList
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
