@@ -26,9 +26,8 @@ public class App {
 
         Basket.printTotalPriceBasket();
 
-        //Basket.findProduct("молоко");
-
-        //Basket.findProduct("чипсы");
+        Basket.findProduct("каша");
+        Basket.findProduct("чипсы");
 
         Basket.cleaningBasket();
 
@@ -36,10 +35,10 @@ public class App {
 
         Basket.printTotalPriceBasket();
 
-       // Basket.findProduct("масло");
+        Basket.findProduct("масло");
         System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
         //Создайте один объект типа SearchEngine
-        SearchEngine SearchEngine = new SearchEngine(100);
+        SearchEngine SearchEngine = new SearchEngine();
 
         // Я ОТДЕЛЬНЫЕ СОЗДАЛА, А НЕ ТЕ ЧТО В КОРЗИНЕ!
         Product product1 = new Product("масло");
@@ -113,5 +112,54 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
+        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ЛИСТЫ ****");
+        // скопировала с прошлой корзины
+        Basket.addProduct("молоко", 56); // обычное молоко
+        Basket.addProduct("молоко", 56, 40); // со скидкой
+        Basket.addProduct("молоко"); // с фикс.ценой
+        Basket.addProduct("хлеб", 23); // обычный хлеб
+        Basket.addProduct("хлеб", 23, 20); // со скидкой
+        Basket.addProduct("хлеб"); // с фиксированной ценой
+        Basket.addProduct("масло", 130);
+        Basket.addProduct("сметана", 78);
+        Basket.addProduct("сосиски", 202);
+        Basket.addProduct("чипсы", 249);
+
+        Basket.printBasket();
+        Basket.RemovingProductBasket("молоко");
+        Basket.RemovingProductBasket("каша");
+        Basket.printBasket();
+
+        SearchEngine SearchEngineList = new SearchEngine();
+
+        Product product7 = new Product("масло");
+        Product product8 = new Product("молоко");
+        Product product9 = new Product("хлеб");
+        Article article7 = new Article("масло", "масло, масло, 87% жирности");
+        Article article8 = new Article("масло", "65% жирности");
+        Article article9 = new Article("хлеб", "хлеб натуральный, быстро плеснеевеет");
+
+        SearchEngineList.add(product7);
+        SearchEngineList.add(product8);
+        SearchEngineList.add(product9);
+        SearchEngineList.add(article7);
+        SearchEngineList.add(article8);
+        SearchEngineList.add(article9);
+
+        SearchEngineList.search("масло");
+        SearchEngineList.search("молоко");
+        SearchEngineList.search("хлеб");
+
+        try {
+            SearchEngineList.searchSuitableElement("масло");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
+        try {
+            SearchEngineList.searchSuitableElement("чипсы");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
+
     }
 }

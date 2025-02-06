@@ -1,35 +1,35 @@
 package org.skypro.skyshop.Search; // ПОИСК это серч
 
 import org.skypro.skyshop.application.errors.BestResultNotFound;
+import org.skypro.skyshop.product.Product;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class SearchEngine { // Поисковый движок
-    private Searchable[] searchable;
+    private ArrayList searchable; // заменила
     private int sizeSearchable = 0;
 
-    public SearchEngine(int size) {
-        this.searchable = new Searchable[size]; // заданный размер сайз для созжания всех элементов
+    public SearchEngine() {
+        this.searchable = new ArrayList<>(); // поменяла конструктор
     }
 
-    public void add(Searchable searchableName) { // сначала они все созданные элементы добавляются в массив элементов searchable[sizeSearchable], ограниченного размером сайз
-        searchable[sizeSearchable] = searchableName;
-        sizeSearchable++; // и число элементов увеличивается
+    public void add(Searchable searchableName) { // все созданные элементы добавляются в список searchable
+        searchable.add(searchableName);
+        sizeSearchable++; // счетчик созданных элеметов
     }
 
-    public Searchable[] search(String searchableName) {
-        Searchable[] result = new Searchable[5]; // создала новый массив, на 5 элементов, у него индекс j
-        int j = 0; // индекс нового массива
-        for (int i = 0; i < sizeSearchable; i++) {
-            if (searchable[i].gettingSearchTerm().equals(searchableName)) {
-                result[j] = searchable[i];
-                j++;
-            }
-            if (j == 5) {
-                break;
+    public ArrayList<Searchable> search(String searchableName) {
+        ArrayList<Searchable> result = new ArrayList<>(); // создала новый список для найденных
+        Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
+        while (iterator.hasNext()) { // пока есть след/элемент в списке
+            Searchable element = iterator.next();
+            if (element.gettingSearchTerm().equals(searchableName)) {
+                result.add(element);
             }
         }
-        System.out.println(Arrays.toString(result));
+        System.out.println(result);
         return result;
     }
 
@@ -37,9 +37,12 @@ public class SearchEngine { // Поисковый движок
         Searchable searchResult = null; // подходящий элемент
         String str, substring; // строка, подстрока
         int quantityResult = 0; // счетчик вхождений
-        for (int i = 0; i < sizeSearchable; i++) { // перебор всех созданных номеров элементов
-            if (searchable[i].gettingSearchTerm().equals(search)) { // нашел совпадающий по имени элемент
-                str = searchable[i].getSearchTerm(); // строка
+
+        Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
+        while (iterator.hasNext()) { // пока есть след/элемент в списке
+            Searchable element = iterator.next();
+            if (element.gettingSearchTerm().equals(search)) {
+                str = element.getSearchTerm(); // строка element
                 substring = search; // подстрока
 
                 int quantity = 0; // количество вхождений
@@ -53,10 +56,11 @@ public class SearchEngine { // Поисковый движок
                 }
                 if (quantityResult < quantity) {
                     quantityResult = quantity;
-                    searchResult = searchable[i];
+                    searchResult = element;
                 }
             }
         }
+
         if (searchResult == null) {
             throw new BestResultNotFound(search);
         }
@@ -64,7 +68,5 @@ public class SearchEngine { // Поисковый движок
                 search + "' является элемент /" + searchResult +
                 "/, в нем количество вхождений поискового слова = " + quantityResult);
         return searchResult;
-
-
     }
 }
