@@ -6,10 +6,11 @@ import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class ProductBasket {
-    private ArrayList basket; //поменяла структуру на ArrayList
+    private List basket; //поменяла структуру на ArrayList
     private int sizeBasket = 0;
 
     public ProductBasket() {
@@ -54,8 +55,8 @@ public class ProductBasket {
         return false;
     }
 
-    public ArrayList RemovingProductBasket(String productName) { // удаление продукты из корзины
-        ArrayList<Product> deletList = new ArrayList<>(); // лист для удаленных продуктов
+    public List RemovingProductBasket(String productName) { // удаление продукты из корзины
+        List<Product> deletList = new ArrayList<>(); // лист для удаленных продуктов
         Iterator<Product> iterator = basket.iterator(); // получние итератора из списка Корзины
         while (iterator.hasNext()) { // пока есть след.в списке Корзины
             Product element = iterator.next(); // элемент Корзины

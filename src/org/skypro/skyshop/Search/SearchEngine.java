@@ -6,10 +6,10 @@ import org.skypro.skyshop.product.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class SearchEngine { // Поисковый движок
-    private ArrayList searchable; // заменила
-    private int sizeSearchable = 0;
+    private List searchable; // заменила
 
     public SearchEngine() {
         this.searchable = new ArrayList<>(); // поменяла конструктор
@@ -17,11 +17,10 @@ public class SearchEngine { // Поисковый движок
 
     public void add(Searchable searchableName) { // все созданные элементы добавляются в список searchable
         searchable.add(searchableName);
-        sizeSearchable++; // счетчик созданных элеметов
-    }
+            }
 
-    public ArrayList<Searchable> search(String searchableName) {
-        ArrayList<Searchable> result = new ArrayList<>(); // создала новый список для найденных
+    public List<Searchable> search(String searchableName) {
+        List<Searchable> result = new ArrayList<>(); // создала новый список для найденных
         Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
         while (iterator.hasNext()) { // пока есть след/элемент в списке
             Searchable element = iterator.next();
