@@ -3,29 +3,28 @@ package org.skypro.skyshop.Search; // ПОИСК это серч
 import org.skypro.skyshop.application.errors.BestResultNotFound;
 import org.skypro.skyshop.product.Product;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class SearchEngine { // Поисковый движок
-    private List searchable; // заменила
+    private Map<String, List<Searchable>> searchable; // заменила на Map
 
     public SearchEngine() {
-        this.searchable = new ArrayList<>(); // поменяла конструктор
+        this.searchable = new TreeMap<>(); // поменяла конструктор на TreeMap
     }
 
-    public void add(Searchable searchableName) { // все созданные элементы добавляются в список searchable
-        searchable.add(searchableName);
-            }
+    public void add(Searchable searchableName) { // все созданные элементы (продукты и статьи) добавляются в searchable
+        List searchableList = searchable.computeIfAbsent(searchableName.gettingSearchTerm(), k -> new ArrayList<>()); // лист для значений, если нет, будет создан
+        searchableList.add(searchableName); // положен термин в лист значений
+        searchable.put(searchableName.gettingSearchTerm(), searchableList); // добавление ключа и значения
+    }
 
     public List<Searchable> search(String searchableName) {
         List<Searchable> result = new ArrayList<>(); // создала новый список для найденных
-        Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
-        while (iterator.hasNext()) { // пока есть след/элемент в списке
-            Searchable element = iterator.next();
-            if (element.gettingSearchTerm().equals(searchableName)) {
-                result.add(element);
+        for (List<Searchable> searchableList : searchable.values()) {
+            for (Searchable searchable : searchableList) {
+                if (searchable.gettingSearchTerm().equals(searchableName)) {
+                    result.add(searchable);
+                }
             }
         }
         System.out.println(result);
@@ -37,25 +36,26 @@ public class SearchEngine { // Поисковый движок
         String str, substring; // строка, подстрока
         int quantityResult = 0; // счетчик вхождений
 
-        Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
-        while (iterator.hasNext()) { // пока есть след/элемент в списке
-            Searchable element = iterator.next();
-            if (element.gettingSearchTerm().equals(search)) {
-                str = element.getSearchTerm(); // строка element
-                substring = search; // подстрока
+        for (List<Searchable> searchableList : searchable.values()) {
+            for (Searchable searchable : searchableList) {
+                if (searchable.gettingSearchTerm().equals(search)) {
 
-                int quantity = 0; // количество вхождений
-                int index = 0; // текущий индекс в строке
-                int indexSubStr = str.indexOf(substring, index); // целое число 'Индекс подстроки' это индекс первого вхождения начиная с индекса строки (при первом вхождении =0)
+                    str = searchable.getSearchTerm(); // строка element
+                    substring = search; // подстрока
 
-                while (indexSubStr != -1) { // возвращает -1 когда не находит вхождений
-                    quantity++; // увеличение количества, при нахождении подстроки в строке
-                    index = indexSubStr + substring.length(); // переприсвоение текущему индексу номера подиндекса + длина слова
-                    indexSubStr = str.indexOf(substring, index); // переприсвоение подиндекса с учетом нового индекса начала
-                }
-                if (quantityResult < quantity) {
-                    quantityResult = quantity;
-                    searchResult = element;
+                    int quantity = 0; // количество вхождений
+                    int index = 0; // текущий индекс в строке
+                    int indexSubStr = str.indexOf(substring, index); // целое число 'Индекс подстроки' это индекс первого вхождения начиная с индекса строки (при первом вхождении =0)
+
+                    while (indexSubStr != -1) { // возвращает -1 когда не находит вхождений
+                        quantity++; // увеличение количества, при нахождении подстроки в строке
+                        index = indexSubStr + substring.length(); // переприсвоение текущему индексу номера подиндекса + длина слова
+                        indexSubStr = str.indexOf(substring, index); // переприсвоение подиндекса с учетом нового индекса начала
+                    }
+                    if (quantityResult < quantity) {
+                        quantityResult = quantity;
+                        searchResult = searchable;
+                    }
                 }
             }
         }
