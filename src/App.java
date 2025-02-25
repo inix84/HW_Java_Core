@@ -38,7 +38,8 @@ public class App {
         Basket.printTotalPriceBasket();
 
         Basket.findProduct("масло");
-        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
+        System.out.println(
+                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
         //Создайте один объект типа SearchEngine
         SearchEngine SearchEngine = new SearchEngine();
 
@@ -74,7 +75,8 @@ public class App {
         SearchEngine.search("молоко");
         SearchEngine.search("хлеб");
 
-        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ИСКЛЮЧЕНИЯ ****");
+        System.out.println(
+                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ИСКЛЮЧЕНИЯ ****");
         try {
             Product product11 = new Product(null);
         } catch (IllegalArgumentException e) {
@@ -114,7 +116,8 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
-        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ЛИСТЫ ****");
+        System.out.println(
+                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ЛИСТЫ ****");
         // скопировала с прошлой корзины
         Basket.addProduct("молоко", 56); // обычное молоко
         Basket.addProduct("молоко", 56, 40); // со скидкой
@@ -162,8 +165,12 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
-        System.out.println("**** ДЗ КАРТЫ **** ");
-        System.out.println("**** Демонстрация корзины и всех ее методов **** ");
+        System.out.println(
+                "**** ДЗ КАРТЫ **** ");
+
+        System.out.println(
+                "**** Демонстрация корзины и всех ее методов **** ");
+
         ProductBasket Basket3 = new ProductBasket();
         Basket3.addProduct("молоко", 56); // обычное молоко
         Basket3.addProduct("молоко", 56, 40); // со скидкой
@@ -180,10 +187,6 @@ public class App {
         Basket3.addProduct("чипсы", 249);
         Basket3.printTotalPriceBasket();
         Basket3.printBasket();
-// была демонстрация очистки корзины
-//        Basket3.cleaningBasket();
-//        Basket3.printBasket();
-//        Basket3.printTotalPriceBasket();
 
         Basket3.RemovingProductBasket("молоко");
         Basket3.RemovingProductBasket("каша");
@@ -191,7 +194,13 @@ public class App {
 
         Basket3.findProduct("каша");
         Basket3.findProduct("хлеб");
-        System.out.println("**** Демонстрация поискового движка **** ");
+
+        Basket3.cleaningBasket();
+        Basket3.printBasket();
+        Basket3.printTotalPriceBasket();
+
+        System.out.println(
+                "**** Демонстрация поискового движка **** ");
 
         SearchEngine SearchEngine3 = new SearchEngine();
 

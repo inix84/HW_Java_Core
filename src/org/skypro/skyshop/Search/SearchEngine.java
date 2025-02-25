@@ -16,18 +16,18 @@ public class SearchEngine { // Поисковый движок
         List searchableList = searchable.computeIfAbsent(searchableName.gettingSearchTerm(), k -> new ArrayList<>()); // лист для значений, если нет, будет создан
         searchableList.add(searchableName); // положен термин в лист значений
         searchable.put(searchableName.gettingSearchTerm(), searchableList); // добавление ключа и значения
+        System.out.println("мапа содержит теперь  = " + searchable);
     }
 
-    public List<Searchable> search(String searchableName) {
-        List<Searchable> result = new ArrayList<>(); // создала новый список для найденных
-        for (List<Searchable> searchableList : searchable.values()) {
-            for (Searchable searchable : searchableList) {
-                if (searchable.gettingSearchTerm().equals(searchableName)) {
-                    result.add(searchable);
-                }
+    public Map search(String searchableName) {
+        //System.out.println("searchable.get(searchableName)" + searchable.get(searchableName));
+        Map result = new TreeMap<>(); // создала новую мапу для найденных ЭЛЕМЕНТОВ(статьи и продукты)
+        for (String name : searchable.keySet()) { // идем по всем ключам
+            if (name == searchableName) { // если строковые поля равны, ключ и поисковое слово
+                result.put(name, searchable.get(searchableName)); // добавляем в ключ этот ключ, а в значение значение этого поискового слова
             }
         }
-        System.out.println(result);
+        System.out.println("по поисковому запросу /" + searchableName + "/ найдены след.продукты и статьи: " + result);
         return result;
     }
 
