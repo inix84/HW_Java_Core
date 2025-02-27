@@ -9,7 +9,7 @@ public class SearchEngine { // Поисковый движок
     private Map<String, List<Searchable>> searchable; // заменила на Map
 
     public SearchEngine() {
-        this.searchable = new TreeMap<>(); // поменяла конструктор на TreeMap
+        this.searchable = new HashMap<>(); // поменяла конструктор на TreeMap
     }
 
     public void add(Searchable searchableName) { // все созданные элементы (продукты и статьи) добавляются в searchable
@@ -18,12 +18,11 @@ public class SearchEngine { // Поисковый движок
         searchable.put(searchableName.gettingSearchTerm(), searchableList); // добавление ключа и значения
         System.out.println("мапа содержит теперь  = " + searchable);
     }
-
-    public Map <String, Searchable> search(String searchableName) {
+    public Map<String, Searchable> search(String searchableName) {
         //System.out.println("searchable.get(searchableName)" + searchable.get(searchableName));
         Map<String, Searchable> result = new TreeMap<>(); // создала новую мапу для найденных ЭЛЕМЕНТОВ(статьи и продукты)
         for (String name : searchable.keySet()) { // идем по всем ключам
-            if (name == searchableName) { // если строковые поля равны, ключ и поисковое слово
+            if (name.equals(searchableName)) { // если строковые поля равны, ключ и поисковое слово
                 result.put(name, (Searchable) searchable.get(searchableName)); // добавляем в ключ этот ключ, а в значение значение этого поискового слова
             }
         }

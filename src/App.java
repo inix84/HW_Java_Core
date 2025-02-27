@@ -1,5 +1,3 @@
-//import org.skypro.skyshop.Search.SearchEngine;
-
 import org.skypro.skyshop.Search.SearchEngine;
 import org.skypro.skyshop.application.errors.BestResultNotFound;
 import org.skypro.skyshop.article.Article;
