@@ -36,7 +36,8 @@ public class App {
         Basket.printTotalPriceBasket();
 
         Basket.findProduct("масло");
-        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
+        System.out.println(
+                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ПОЛИМОРФИЗМ ****");
         //Создайте один объект типа SearchEngine
         SearchEngine SearchEngine = new SearchEngine();
 
@@ -72,7 +73,8 @@ public class App {
         SearchEngine.search("молоко");
         SearchEngine.search("хлеб");
 
-        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ИСКЛЮЧЕНИЯ ****");
+        System.out.println(
+                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ИСКЛЮЧЕНИЯ ****");
         try {
             Product product11 = new Product(null);
         } catch (IllegalArgumentException e) {
@@ -103,7 +105,7 @@ public class App {
         SearchEngine.add(article5);
         SearchEngine.add(article6);
         try {
-        SearchEngine.searchSuitableElement("масло");
+            SearchEngine.searchSuitableElement("масло");
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
@@ -112,7 +114,8 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
-        System.out.println("**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ЛИСТЫ ****");
+        System.out.println(
+                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ ЛИСТЫ ****");
         // скопировала с прошлой корзины
         Basket.addProduct("молоко", 56); // обычное молоко
         Basket.addProduct("молоко", 56, 40); // со скидкой
@@ -160,6 +163,82 @@ public class App {
         } catch (BestResultNotFound e) {
             System.out.println(e.toString());
         }
+        System.out.println(
+                "**** ДЗ КАРТЫ **** ");
 
+        System.out.println(
+                "**** Демонстрация корзины и всех ее методов **** ");
+
+        ProductBasket Basket3 = new ProductBasket();
+        Basket3.addProduct("молоко", 56); // обычное молоко
+        Basket3.addProduct("молоко", 56, 40); // со скидкой
+        Basket3.addProduct("молоко"); // с фикс.ценой
+
+        Basket3.addProduct("хлеб", 23); // обычный хлеб
+        Basket3.addProduct("хлеб", 453); // обычный хлеб
+        Basket3.addProduct("хлеб", 23, 20); // со скидкой
+        Basket3.addProduct("хлеб"); // с фиксированной ценой
+
+        Basket3.addProduct("масло", 130);
+        Basket3.addProduct("сметана", 78);
+        Basket3.addProduct("сосиски", 202);
+        Basket3.addProduct("чипсы", 249);
+        Basket3.printTotalPriceBasket();
+        Basket3.printBasket();
+
+        Basket3.RemovingProductBasket("молоко");
+        Basket3.RemovingProductBasket("каша");
+        Basket3.printBasket();
+
+        Basket3.findProduct("каша");
+        Basket3.findProduct("хлеб");
+
+        Basket3.cleaningBasket();
+        Basket3.printBasket();
+        Basket3.printTotalPriceBasket();
+
+        System.out.println(
+                "**** Демонстрация поискового движка **** ");
+
+        SearchEngine SearchEngine3 = new SearchEngine();
+
+        Product product31 = new Product("масло");
+        Product product32 = new Product("молоко");
+        Product product33 = new Product("хлеб");
+
+        SearchEngine3.add(product31);
+        SearchEngine3.add(product32);
+        SearchEngine3.add(product33);
+
+        Article article31 = new Article("масло", "масло, масло, 87% жирности");
+        Article article32 = new Article("масло", "65% жирности");
+        Article article33 = new Article("хлеб", "хлеб натуральный, быстро плеснеевеет");
+
+        SearchEngine3.add(article31);
+        SearchEngine3.add(article32);
+        SearchEngine3.add(article33);
+
+        product31.getStringRepresentation();
+        product32.getStringRepresentation();
+        product33.getStringRepresentation();
+        article31.getStringRepresentation();
+        article32.getStringRepresentation();
+        article33.getStringRepresentation();
+
+
+        SearchEngine3.search("масло");
+        SearchEngine3.search("молоко");
+        SearchEngine3.search("хлеб");
+
+        try {
+            SearchEngine3.searchSuitableElement("масло");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
+        try {
+            SearchEngine3.searchSuitableElement("чипсы");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
     }
 }

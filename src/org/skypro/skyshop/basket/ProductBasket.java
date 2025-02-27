@@ -4,85 +4,94 @@ import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+
+import java.util.*;
 
 
 public class ProductBasket {
-    private List basket; //поменяла структуру на ArrayList
-    private int sizeBasket = 0;
+    private Map<String, List<Product>> basket; //поменяла структуру на Map
 
     public ProductBasket() {
-        this.basket = new ArrayList<>(); // поменяла конструктор
+        this.basket = new HashMap(); // поменяла конструктор
     }
 
-    public void addProduct(String productName, int productPrice) {
-// условия убрала
-        SimpleProduct newProduct = new SimpleProduct(productName, productPrice);
-        basket.add(newProduct); // методо добавления продукта в корзину-лист
-        sizeBasket++; // по прежнему считает созданные продукты
-    } // "Невозможно добавить продукт"убрала
+    //добавление товара
+    public void addProduct(String productName, int productPrice) { // слово, будущее название продукта + его будущая цена инт
+        SimpleProduct newProduct = new SimpleProduct(productName, productPrice); //создание нового "продукта с основной ценой"
+        // теперь нужно распределить в нужный список с одинаковым ключом, либо создать если такого ключа нет
+        List productList = basket.computeIfAbsent(productName, k -> new ArrayList<>());
+        productList.add(newProduct); // добавление созданного продукта в этот список
+        basket.put(productName, productList);// кладем в корзину имя продукта как ключ, а сам продукт этот список с уже добавленным проуктом в целом
+    }
 
-    public void addProduct(String name, int basicPrice, int discount) {
-        DiscountedProduct newProduct = new DiscountedProduct(name, basicPrice, discount);
-        basket.add(newProduct);
-        sizeBasket++;
+    public void addProduct(String productName, int basicPrice, int discount) {
+        DiscountedProduct newProduct = new DiscountedProduct(productName, basicPrice, discount);
+        List productList = basket.computeIfAbsent(productName, k -> new ArrayList<>());
+        productList.add(newProduct);
+        basket.put(productName, productList);
     }
 
     public void addProduct(String productName) {
         FixPriceProduct newProduct = new FixPriceProduct(productName);
-        basket.add(newProduct);
-        sizeBasket++;
+        List productList = basket.computeIfAbsent(productName, k -> new ArrayList<>());
+        productList.add(newProduct);
+        basket.put(productName, productList);
     }
 
     public void cleaningBasket() { // очистка корзины
         basket.clear();
-        sizeBasket = 0;
+
         System.out.println("произошла очистка корзины!");
     }
 
+    // поиск товара по имени
     public boolean findProduct(String productName) {
-        Iterator<Product> iterator = basket.iterator();
-        while (iterator.hasNext()) { // пока есть след/элемент в списке
-            Product element = iterator.next();
-            if (element.getName().equals(productName)) { // если след.элемент его поле гет найм совпадает с передаваемым на поиск
-                System.out.println("искомый продукт " + productName + " найден");
-                return true;
+        for (List<Product> productList : basket.values()) {
+            for (Product product : productList) {
+                if (product.getName().equals(productName)) {
+                    System.out.println("Искомый продукт " + productName + " найден.");
+                    return true;
+                }
             }
         }
-        System.out.println("искомый продукт " + productName + " не найден");
+        System.out.println("Искомый продукт " + productName + " не найден.");
         return false;
     }
 
-    public List RemovingProductBasket(String productName) { // удаление продукты из корзины
+    // удаление товара
+    public List RemovingProductBasket(String productName) {
         List<Product> deletList = new ArrayList<>(); // лист для удаленных продуктов
-        Iterator<Product> iterator = basket.iterator(); // получние итератора из списка Корзины
-        while (iterator.hasNext()) { // пока есть след.в списке Корзины
-            Product element = iterator.next(); // элемент Корзины
-            if (element.getName().equals(productName)) { // если совпадение по имени нашлось
-                deletList.add(element); // добавляем это имя в дел-список
-                iterator.remove(); //Строчка iterator.remove() в Java удаляет последний элемент, который был возвращён итератором.
-                // Этот метод является необязательным и может быть вызван только один раз после вызова next().
-                // basket.remove(element); (удаляем из списка Корзины) заменила на iterator.remove();
+        if (basket.containsKey(productName)) { // если такой ключ есть в корзине
+            // перебираем все значения мапы, все продукты там содержащиеся,
+            for (List<Product> productList : basket.values()) {
+                for (Product product : productList) {
+                    //и все добавляем в список удаленных продуктов, если имена совпадают
+                    if (product.getName().equals(productName)) {
+                        deletList.add(product);
+                    }
+                }
             }
+            basket.remove(productName); // удаляем
+
         }
-        if (deletList.isEmpty()) {
-            System.out.println("Ничего не было удалено из корзины. Список удаленных продуктов пуст.");
+        if (deletList.isEmpty()) { // если пуст
+            System.out.println("Ничего не было удалено из корзины по запросу /" + productName + "/. Список удаленных продуктов пуст.");
         } else {
-            System.out.println("Удаленные продукты: " + deletList);
+            System.out.println("Удаленные продукты по запросу /" + productName + "/: " + deletList);
         }
         return deletList;
     }
 
+    // счет спец товаров
     public void printTotalPriceBasket() {
         int summ = 0;
         int Special = 0;
-        for (int i = 0; i < sizeBasket; i++) {
-            Product product = (Product) basket.get(i);
-            summ = summ + product.getPrice();
-            if (product.isSpecial()) {
-                Special = Special + 1;
+        for (List<Product> productList : basket.values()) {
+            for (Product product : productList) {
+                summ = summ + product.getPrice();
+                if (product.isSpecial()) {
+                    Special++;
+                }
             }
         }
         System.out.println("Общая сумма корзины и количество спец.товаров: ");
@@ -90,16 +99,12 @@ public class ProductBasket {
         System.out.println("Специальных товаров: " + Special);
     }
 
+    // распечатка корзины
     public void printBasket() {
-        if (sizeBasket != 0) {
-            System.out.println("В корзине лежат: ");
-            Iterator iterator = basket.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
-        }
-        if (sizeBasket == 0) {
+        System.out.println("В корзине лежат: " + basket);
+        if (basket.size() == 0) {
             System.out.println("В корзине пусто ");
         }
     }
+
 }
