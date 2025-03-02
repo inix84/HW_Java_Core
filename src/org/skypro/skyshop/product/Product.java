@@ -4,7 +4,7 @@ import org.skypro.skyshop.Search.Searchable;
 
 import java.util.Objects;
 
-public class Product implements Searchable { // родительский класс для продуктов разных цен
+public class Product implements Searchable,Comparable<Product> { // родительский класс для продуктов разных цен
 
     private String name;
 
@@ -41,6 +41,11 @@ public class Product implements Searchable { // родительский кла�
     }
 
     @Override
+    public void getStringRepresentation() {
+        Searchable.super.getStringRepresentation();
+    }
+
+    @Override
     public String toString() {
         return "ПРОДУКТ: " + name;
     }
@@ -56,5 +61,10 @@ public class Product implements Searchable { // родительский кла�
     @Override
     public int hashCode() {
         return Objects.hashCode(name);
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return 0;
     }
 }

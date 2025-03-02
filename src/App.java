@@ -268,10 +268,10 @@ public class App {
         System.out.println(
                 "                                                                ****  Демонстрация Задание 2.  **** ");
 
-//        SearchEngine4.search("масло");
-//        SearchEngine4.search("молоко");
-//        SearchEngine4.search("хлеб");
-//
+        SearchEngine4.search("масло");
+        SearchEngine4.search("молоко");
+        SearchEngine4.search("хлеб");
+
 //        try {
 //            SearchEngine4.searchSuitableElement("масло");
 //        } catch (BestResultNotFound e) {

@@ -16,9 +16,9 @@ public class SearchEngine { // Поисковый движок
     }
 
     public Set<Searchable> search(String searchableName) {
-        Set<Searchable> result = new HashSet<>(); // создала новый список для найденных
-        Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
-        while (iterator.hasNext()) { // пока есть след/элемент в списке
+        Set<Searchable> result = new TreeSet<>(); // поменяла на трисет / создается новый сет для найденных элементов (продуктов и статей)
+        Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по сету searchable
+        while (iterator.hasNext()) { // пока есть след/элемент в сете
             Searchable element = iterator.next();
             if (element.gettingSearchTerm().equals(searchableName)) {
                 result.add(element);
@@ -27,6 +27,23 @@ public class SearchEngine { // Поисковый движок
         System.out.println(result);
         return result;
     }
+
+//
+//    public Map<String, ArrayList> search2(String searchableName) {
+//        System.out.println("searchable.get(searchableName)" + searchable.get(searchableName));
+//        Map<String, ArrayList> result = new TreeMap<>(); // создала новую мапу для найденных ЭЛЕМЕНТОВ(статьи и продукты)
+//        for (String name : searchable.keySet()) { // идем по всем ключам
+//            if (name.equals(searchableName)) { // если строковые поля равны, ключ и поисковое слово
+//                result.put(name, (ArrayList) searchable.get(searchableName)); // добавляем в ключ этот ключ, а в значение значение этого поискового слова
+//            }
+//        }
+//        System.out.println("по поисковому запросу /" + searchableName + "/ найдены след.продукты и статьи: " + result);
+//        return result;
+//    }
+
+
+
+
 
     public Searchable searchSuitableElement(String search) throws BestResultNotFound { //  метод Поиска Подходящего Элемента (продукт/ статья)
         Searchable searchResult = null; // подходящий элемент

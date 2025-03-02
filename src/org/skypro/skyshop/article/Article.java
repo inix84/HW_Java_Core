@@ -4,7 +4,7 @@ import org.skypro.skyshop.Search.Searchable;
 
 import java.util.Objects;
 
-public class Article implements Searchable {
+public class Article implements Searchable,Comparable< Article> {
     private final String titleArticle; // название статьи
     private final String textArticle; // текст статьи
 
@@ -33,6 +33,11 @@ public class Article implements Searchable {
     }
 
     @Override
+    public void getStringRepresentation() {
+        Searchable.super.getStringRepresentation();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Article article)) return false;
@@ -42,5 +47,12 @@ public class Article implements Searchable {
     @Override
     public int hashCode() {
         return Objects.hashCode(titleArticle);
+    }
+
+    @Override
+    public int compareTo(Article o) {
+//        int i = this.gettingSearchTerm() - o.gettingSearchTerm();
+        return 0;
+
     }
 }
