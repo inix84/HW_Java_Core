@@ -9,7 +9,7 @@ import org.skypro.skyshop.product.SimpleProduct;
 public class App {
     public static void main(String[] args) {
 //        System.out.println(
-//                "**** ДЗ ИНКАПСУЛЯЦИЯ, ДЗ НАСЛЕДОВАНИЕ **** ");
+//                "                                                      ****  ДЗ ИНКАПСУЛЯЦИЯ, ДЗ НАСЛЕДОВАНИЕ **** ");
 //        ProductBasket Basket = new ProductBasket();
 //        Basket.addProduct("молоко", 56); // обычное молоко
 //        Basket.addProduct("молоко", 56, 40); // со скидкой
@@ -37,7 +37,7 @@ public class App {
 //
 //        Basket.findProduct("масло");
 //        System.out.println(
-//                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ 2, 3, 4 ПОЛИМОРФИЗМ ****");
+//                "                                          **** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ 2, 3, 4 ПОЛИМОРФИЗМ ****");
 //        //Создайте один объект типа SearchEngine
 //        SearchEngine SearchEngine = new SearchEngine();
 //
@@ -74,7 +74,7 @@ public class App {
 //        SearchEngine.search("хлеб");
 //
 //        System.out.println(
-//                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ 5 ИСКЛЮЧЕНИЯ ****");
+//                "                                                 **** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ 5 ИСКЛЮЧЕНИЯ ****");
 //        try {
 //            Product product11 = new Product(null);
 //        } catch (IllegalArgumentException e) {
@@ -115,7 +115,7 @@ public class App {
 //            System.out.println(e.toString());
 //        }
 //        System.out.println(
-//                "**** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ 6 ЛИСТЫ ****");
+//                "                                                      **** ТЕСТИРОВАНИЕ ИЗМЕНЕНИЙ. ДЗ 6 ЛИСТЫ ****");
 //        // скопировала с прошлой корзины
 //        Basket.addProduct("молоко", 56); // обычное молоко
 //        Basket.addProduct("молоко", 56, 40); // со скидкой
@@ -140,7 +140,7 @@ public class App {
 //        Product product9 = new Product("хлеб");
 //        Article article7 = new Article("масло", "масло, масло, 87% жирности");
 //        Article article8 = new Article("масло", "65% жирности");
-//        Article article9 = new Article("хлеб", "хлеб натуральный, быстро плеснеевеет");
+//        Article article9 = new Article("хлеб", "хлеб натуральный, быстро плесневеет");
 //
 //        SearchEngineList.add(product7); // добавила их в новый SearchEngineList
 //        SearchEngineList.add(product8);
@@ -164,10 +164,10 @@ public class App {
 //            System.out.println(e.toString());
 //        }
 //        System.out.println(
-//                "**** ДЗ КАРТЫ 7 **** ");
+//                "                                                                             **** ДЗ КАРТЫ 7 **** ");
 //
 //        System.out.println(
-//                "**** Демонстрация корзины и всех ее методов **** ");
+//                "                                                 **** Демонстрация корзины и всех ее методов **** ");
 //
 //        ProductBasket Basket3 = new ProductBasket();
 //        Basket3.addProduct("молоко", 56); // обычное молоко
@@ -198,7 +198,7 @@ public class App {
 //        Basket3.printTotalPriceBasket();
 //
 //        System.out.println(
-//                "**** Демонстрация поискового движка **** ");
+//                "                                                         **** Демонстрация поискового движка **** ");
 //
 //        SearchEngine SearchEngine3 = new SearchEngine();
 //
@@ -242,10 +242,10 @@ public class App {
 //        }
 
         System.out.println(
-                "                                    ****  ДЗ 8 МНОЖЕСТВА  **** ");
+                "                                                                         ****  ДЗ 8 МНОЖЕСТВА  **** ");
 
         System.out.println(
-                "                                        ****  Демонстрация Задание 1. Шаг 1  **** ");
+                "                                                                ****  Демонстрация Задание 1.  **** ");
         SearchEngine SearchEngine4 = new SearchEngine();
 
         Product product41 = new Product("масло");
@@ -258,13 +258,15 @@ public class App {
 
         Article article41 = new Article("масло", "масло, масло, 87% жирности");
         Article article42 = new Article("масло", "65% жирности"); // не вносит в множество
-        Article article43 = new Article("хлеб", "хлеб натуральный, быстро плеснеевеет");
+        Article article43 = new Article("хлеб", "хлеб натуральный, быстро плесневеет");
 
         SearchEngine4.add(article41);
         SearchEngine4.add(article42);
         SearchEngine4.add(article43);
 
         System.out.println(SearchEngine4);
+        System.out.println(
+                "                                                                ****  Демонстрация Задание 2.  **** ");
 
 //        SearchEngine4.search("масло");
 //        SearchEngine4.search("молоко");

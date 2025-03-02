@@ -15,8 +15,8 @@ public class SearchEngine { // Поисковый движок
         searchable.add(searchableName);
     }
 
-    public List<Searchable> search(String searchableName) {
-        List<Searchable> result = new ArrayList<>(); // создала новый список для найденных
+    public Set<Searchable> search(String searchableName) {
+        Set<Searchable> result = new HashSet<>(); // создала новый список для найденных
         Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по списку searchable
         while (iterator.hasNext()) { // пока есть след/элемент в списке
             Searchable element = iterator.next();
@@ -67,8 +67,7 @@ public class SearchEngine { // Поисковый движок
 
     @Override
     public String toString() {
-        return "SearchEngine{" +
-                "\nsearchable=" + searchable +
-                '}';
+        return "В поиске участвуют следующие элементы = " +
+                "\n" + searchable;
     }
 }

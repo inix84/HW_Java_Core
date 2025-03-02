@@ -15,7 +15,7 @@ public class Article implements Searchable {
 
     @Override
     public String toString() {
-        return "СТАТЬЯ: Название - " + titleArticle + ", текст - " + textArticle;
+        return "СТАТЬЯ: " + titleArticle + " /текст: " + textArticle +"/";
     }
 
     @Override
