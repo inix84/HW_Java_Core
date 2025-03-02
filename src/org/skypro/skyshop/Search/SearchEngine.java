@@ -28,7 +28,6 @@ public class SearchEngine { // Поисковый движок
         return result;
     }
 
-
     public Searchable searchSuitableElement(String search) throws BestResultNotFound { //  метод Поиска Подходящего Элемента (продукт/ статья)
         Searchable searchResult = null; // подходящий элемент
         String str, substring; // строка, подстрока
