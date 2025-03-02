@@ -272,16 +272,16 @@ public class App {
         SearchEngine4.search("молоко");
         SearchEngine4.search("хлеб");
 
-//        try {
-//            SearchEngine4.searchSuitableElement("масло");
-//        } catch (BestResultNotFound e) {
-//            System.out.println(e.toString());
-//        }
-//        try {
-//            SearchEngine4.searchSuitableElement("чипсы");
-//        } catch (BestResultNotFound e) {
-//            System.out.println(e.toString());
-//        }
+        try {
+            SearchEngine4.searchSuitableElement("масло");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
+        try {
+            SearchEngine4.searchSuitableElement("чипсы");
+        } catch (BestResultNotFound e) {
+            System.out.println(e.toString());
+        }
 
 
     }

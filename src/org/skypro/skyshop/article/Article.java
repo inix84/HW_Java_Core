@@ -4,7 +4,7 @@ import org.skypro.skyshop.Search.Searchable;
 
 import java.util.Objects;
 
-public class Article implements Searchable,Comparable< Article> {
+public class Article implements Searchable, Comparable<Article> {
     private final String titleArticle; // название статьи
     private final String textArticle; // текст статьи
 
@@ -15,18 +15,25 @@ public class Article implements Searchable,Comparable< Article> {
 
     @Override
     public String toString() {
-        return "СТАТЬЯ: " + titleArticle + " /текст: " + textArticle +"/";
+        return "СТАТЬЯ: " + titleArticle + " /текст: " + textArticle + "/";
     }
 
     @Override
     public String gettingSearchTerm() {
-        return titleArticle; //+ ":" + textArticle;
+        return titleArticle;
     }
+
     @Override
     public String getSearchTerm() {
         String article = titleArticle + textArticle; // склееенная строка
         return article;
     }
+
+    @Override
+    public Integer getNameLength() {
+        return gettingSearchTerm().length();
+    }
+
     @Override
     public String gettingContentType() {
         return "ARTICLE";
@@ -51,8 +58,6 @@ public class Article implements Searchable,Comparable< Article> {
 
     @Override
     public int compareTo(Article o) {
-//        int i = this.gettingSearchTerm() - o.gettingSearchTerm();
-        return 0;
-
+        return this.getNameLength() - o.getNameLength();
     }
 }
