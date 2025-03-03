@@ -72,6 +72,7 @@ public class Product implements Searchable, Comparable<Searchable> { // роди
 
     @Override
     public int compareTo(Searchable o) {
-        return this.getNameLength() - o.getNameLength();
+        //return this.getNameLength() - o.getNameLength();
+        return gettingSearchTerm().compareTo(o.gettingSearchTerm());
     }
 }

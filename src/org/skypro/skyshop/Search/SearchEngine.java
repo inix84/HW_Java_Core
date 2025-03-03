@@ -1,11 +1,12 @@
 package org.skypro.skyshop.Search; // ПОИСК это серч
 
+import org.skypro.skyshop.MaxLengthNameComparator;
 import org.skypro.skyshop.application.errors.BestResultNotFound;
 
 import java.util.*;
 
 public class SearchEngine { // Поисковый движок
-    private Set <Searchable> searchable; // заменила
+    private Set<Searchable> searchable; // заменила
 
     public SearchEngine() {
         this.searchable = new HashSet<>(); // поменяла конструктор
@@ -16,14 +17,19 @@ public class SearchEngine { // Поисковый движок
     }
 
     public Set<Searchable> search(String searchableName) {
-        Set<Searchable> result = new TreeSet<>(); // поменяла на трисет / создается новый сет для найденных элементов (продуктов и статей)
+        Set<Searchable> result = new TreeSet<>(new MaxLengthNameComparator()); // добавила компаратор здесь, там сортировка по длине имени метода getNameLength()
         Iterator<Searchable> iterator = searchable.iterator();// получаем итератор по сету searchable
+        System.out.println("Идет поиск по запросу - " + searchableName);
         while (iterator.hasNext()) { // пока есть след/элемент в сете
             Searchable element = iterator.next();
+            //System.out.println("текущий element = " + element);
+
             if (element.gettingSearchTerm().equals(searchableName)) {
                 result.add(element);
+                //System.out.println("SET result = " + result);
             }
         }
+
         System.out.println("по поисковому запросу /" + searchableName + "/ найдены след.продукты и статьи: " + result);
         return result;
     }

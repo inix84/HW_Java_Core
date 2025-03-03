@@ -16,4 +16,6 @@ public interface Searchable { // ДОПУСТИМЫЙ ПОИСК
 
     // Метод получения длины имени ЭЛЕМЕНТа.
     Integer getNameLength();
+// для компаратора (???)
+    //int compareTo(Searchable o1); (???)
 }
