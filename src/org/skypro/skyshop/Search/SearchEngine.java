@@ -5,10 +5,10 @@ import org.skypro.skyshop.application.errors.BestResultNotFound;
 import java.util.*;
 
 public class SearchEngine { // Поисковый движок
-    private Set searchable; // заменила
+    private Set <Searchable> searchable; // заменила
 
     public SearchEngine() {
-        this.searchable = new HashSet(); // поменяла конструктор
+        this.searchable = new HashSet<>(); // поменяла конструктор
     }
 
     public void add(Searchable searchableName) { // все созданные элементы добавляются в мно searchable
