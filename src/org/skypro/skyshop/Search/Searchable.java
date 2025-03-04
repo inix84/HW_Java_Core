@@ -12,10 +12,9 @@ public interface Searchable { // ДОПУСТИМЫЙ ПОИСК
         //Стоит сделать этот метод интерфейса default и добавить реализацию, которая будет выводить строку вида: «имя Searchable-объекта — типSearchable -объекта».
         System.out.println(gettingSearchTerm() + " - имя Searchable-объекта, " + gettingContentType() + " — тип Searchable-объекта");
     }
+
     String getSearchTerm(); // метод получение одной строчки из элементов для нахождения вхождений
 
     // Метод получения длины имени ЭЛЕМЕНТа.
     Integer getNameLength();
-// для компаратора (???)
-    //int compareTo(Searchable o1); (???)
 }

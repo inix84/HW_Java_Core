@@ -5,7 +5,6 @@ import org.skypro.skyshop.Search.Searchable;
 import java.util.Objects;
 
 public class Product implements Searchable, Comparable<Searchable> { // родительский класс для продуктов разных цен
-
     private String name;
 
     public Product(String name) {
@@ -72,7 +71,6 @@ public class Product implements Searchable, Comparable<Searchable> { // роди
 
     @Override
     public int compareTo(Searchable o) {
-        //return this.getNameLength() - o.getNameLength();
-        return gettingSearchTerm().compareTo(o.gettingSearchTerm());
+        return gettingSearchTerm().compareTo(o.gettingSearchTerm());// естественный порядок сравнения имен
     }
 }

@@ -4,7 +4,7 @@ import org.skypro.skyshop.Search.Searchable;
 
 import java.util.Objects;
 
-public class Article implements Searchable, Comparable <Searchable> {
+public class Article implements Searchable, Comparable<Searchable> {
     private final String titleArticle; // название статьи
     private final String textArticle; // текст статьи
 
@@ -58,7 +58,6 @@ public class Article implements Searchable, Comparable <Searchable> {
 
     @Override
     public int compareTo(Searchable o) {
-        //return this.getNameLength() - o.getNameLength();
-        return gettingSearchTerm().compareTo(o.gettingSearchTerm());
+        return gettingSearchTerm().compareTo(o.gettingSearchTerm()); // естественный порядок сравнения имен
     }
 }
